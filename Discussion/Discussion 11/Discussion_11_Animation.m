@@ -15,9 +15,11 @@ w1 = 6.549;
 w2 = 5.876;
 w3 = 6.791;
 
-q1 = 1/12 * cos(w1*t);
-q2 = 0.0426 * cos(w2*t);
-q3 = 0.0408 * cos(w3*t);
+ScaleFactors = [2.0, 2.0, 10.0];
+
+q1 = ScaleFactors(1)*1/12 * cos(w1*t);
+q2 = ScaleFactors(2)*0.0426 * cos(w2*t);
+q3 = ScaleFactors(3)*0.0408 * cos(w3*t);
 
 ux    = 1.0 * q1;                    % translation in x [ft]
 uy    = 1.0 * q2 + 1.0 * q3;         % translation in y [ft]
@@ -125,7 +127,7 @@ for k = 1:nFrames
                           t(k), ux_main(k), uy_main(k), theta_main(k)));
 
     drawnow;
-    pause(0.1);  % same as before
+    pause(0.05);  % same as before
 end
 
 %% ===== Local function(s) below =====
